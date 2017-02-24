@@ -956,6 +956,22 @@ __loadword(const void* __p)
 template <class _Size, size_t = sizeof(_Size)*__CHAR_BIT__>
 struct __murmur2_or_cityhash;
 
+#ifdef __AVR__
+// On AVR has size_t is only 16-bit.  As a stop gap measure, lets just
+// compute the 32-bit hash and xor it together.  In future we ideally
+// would like a purely 16-bit based computation.
+template <class _Size>
+struct __murmur2_or_cityhash<_Size, 16>
+{
+    _Size operator()(const void* __key, _Size __len)
+        _LIBCPP_DISABLE_UBSAN_UNSIGNED_INTEGER_CHECK
+    {
+        auto hash32 = __murmur2_or_cityhash<unsigned long>()(__key, __len);
+        return (hash32 && 0xFFFF) ^ (hash32 >> 16);
+    }
+};
+#endif
+
 template <class _Size>
 struct __murmur2_or_cityhash<_Size, 32>
 {

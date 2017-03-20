@@ -311,10 +311,13 @@ long double    truncl(long double x);
 _LIBCPP_BEGIN_NAMESPACE_STD
 
 using ::signbit;
+#ifndef __AVR__
 using ::fpclassify;
+#endif // __AVR__
 using ::isfinite;
 using ::isinf;
 using ::isnan;
+#ifndef __AVR__
 using ::isnormal;
 using ::isgreater;
 using ::isgreaterequal;
@@ -326,6 +329,7 @@ using ::isunordered;
 
 using ::float_t;
 using ::double_t;
+#endif // __AVR__
 
 #ifndef _AIX
 using ::abs;
@@ -386,12 +390,15 @@ using ::tanf;
 using ::tanh;
 using ::tanhf;
 
+#ifndef __AVR__
 using ::acosh;
 using ::acoshf;
 using ::asinh;
 using ::asinhf;
 using ::atanh;
 using ::atanhf;
+#endif // __AVR__
+
 using ::cbrt;
 using ::cbrtf;
 
@@ -399,6 +406,7 @@ using ::copysign;
 using ::copysignf;
 
 #if !(defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14))
+#ifndef __AVR__
 using ::erf;
 using ::erff;
 using ::erfc;
@@ -407,6 +415,7 @@ using ::exp2;
 using ::exp2f;
 using ::expm1;
 using ::expm1f;
+#endif // __AVR__
 using ::fdim;
 using ::fdimf;
 using ::fmaf;
@@ -417,6 +426,8 @@ using ::fmin;
 using ::fminf;
 using ::hypot;
 using ::hypotf;
+
+#ifndef __AVR__
 using ::ilogb;
 using ::ilogbf;
 using ::lgamma;
@@ -431,16 +442,21 @@ using ::log2;
 using ::log2f;
 using ::logb;
 using ::logbf;
+#endif // __AVR__
+
 using ::lrint;
 using ::lrintf;
 using ::lround;
 using ::lroundf;
 #endif // !(defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14))
 
+#ifndef __AVR__
 using ::nan;
 using ::nanf;
+#endif // __AVR__
 
 #if !(defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14))
+#ifndef __AVR__
 using ::nearbyint;
 using ::nearbyintf;
 using ::nextafter;
@@ -453,18 +469,22 @@ using ::remquo;
 using ::remquof;
 using ::rint;
 using ::rintf;
+#endif // __AVR__
 using ::round;
 using ::roundf;
+#ifndef __AVR__
 using ::scalbln;
 using ::scalblnf;
 using ::scalbn;
 using ::scalbnf;
 using ::tgamma;
 using ::tgammaf;
+#endif // __AVR__
 using ::trunc;
 using ::truncf;
 #endif // !(defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14))
 
+#ifndef _LIBCPP_HAS_NO_LONG_DOUBLE
 using ::acosl;
 using ::asinl;
 using ::atanl;
@@ -494,8 +514,9 @@ using ::atanhl;
 using ::cbrtl;
 
 using ::copysignl;
+#endif // _LIBCPP_HAS_NO_LONG_DOUBLE
 
-#if !(defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14))
+#if !((defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14)) || defined(_LIBCPP_HAS_NO_LONG_DOUBLE))
 using ::erfl;
 using ::erfcl;
 using ::exp2l;
@@ -526,7 +547,7 @@ using ::scalblnl;
 using ::scalbnl;
 using ::tgammal;
 using ::truncl;
-#endif // !(defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14))
+#endif // !((defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14)) || defined(_LIBCPP_HAS_NO_LONG_DOUBLE))
 
 #if _LIBCPP_STD_VER > 14
 inline _LIBCPP_INLINE_VISIBILITY float       hypot(       float x,       float y,       float z ) { return sqrt(x*x + y*y + z*z); }

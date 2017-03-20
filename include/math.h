@@ -1011,7 +1011,7 @@ tanh(_A1 __lcpp_x) _NOEXCEPT {return ::tanh((double)__lcpp_x);}
 
 // acosh
 
-#if !(defined(_LIBCPP_MSVCRT) && (_VC_CRT_MAJOR_VERSION-0) < 14)
+#if !((defined(_LIBCPP_MSVCRT) && (_VC_CRT_MAJOR_VERSION-0) < 14) || defined(__AVR__))
 inline _LIBCPP_INLINE_VISIBILITY float       acosh(float __lcpp_x) _NOEXCEPT       {return ::acoshf(__lcpp_x);}
 #ifndef _LIBCPP_HAS_NO_LONG_DOUBLE
 inline _LIBCPP_INLINE_VISIBILITY long double acosh(long double __lcpp_x) _NOEXCEPT {return ::acoshl(__lcpp_x);}
@@ -1025,7 +1025,7 @@ acosh(_A1 __lcpp_x) _NOEXCEPT {return ::acosh((double)__lcpp_x);}
 
 // asinh
 
-#if !(defined(_LIBCPP_MSVCRT) && (_VC_CRT_MAJOR_VERSION-0) < 14)
+#if !((defined(_LIBCPP_MSVCRT) && (_VC_CRT_MAJOR_VERSION-0) < 14) || defined(__AVR__))
 inline _LIBCPP_INLINE_VISIBILITY float       asinh(float __lcpp_x) _NOEXCEPT       {return ::asinhf(__lcpp_x);}
 #ifndef _LIBCPP_HAS_NO_LONG_DOUBLE
 inline _LIBCPP_INLINE_VISIBILITY long double asinh(long double __lcpp_x) _NOEXCEPT {return ::asinhl(__lcpp_x);}
@@ -1039,7 +1039,7 @@ asinh(_A1 __lcpp_x) _NOEXCEPT {return ::asinh((double)__lcpp_x);}
 
 // atanh
 
-#if !(defined(_LIBCPP_MSVCRT) && (_VC_CRT_MAJOR_VERSION-0) < 14)
+#if !((defined(_LIBCPP_MSVCRT) && (_VC_CRT_MAJOR_VERSION-0) < 14) || defined(__AVR__))
 inline _LIBCPP_INLINE_VISIBILITY float       atanh(float __lcpp_x) _NOEXCEPT       {return ::atanhf(__lcpp_x);}
 #ifndef _LIBCPP_HAS_NO_LONG_DOUBLE
 inline _LIBCPP_INLINE_VISIBILITY long double atanh(long double __lcpp_x) _NOEXCEPT {return ::atanhl(__lcpp_x);}
@@ -1097,7 +1097,7 @@ copysign(_A1 __lcpp_x, _A2 __lcpp_y) _NOEXCEPT
     return ::copysign((__result_type)__lcpp_x, (__result_type)__lcpp_y);
 }
 
-#if !(defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14))
+#if !((defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14)) || defined(__AVR__))
 
 // erf
 
@@ -1146,6 +1146,10 @@ template <class _A1>
 inline _LIBCPP_INLINE_VISIBILITY
 typename std::enable_if<std::is_integral<_A1>::value, double>::type
 expm1(_A1 __lcpp_x) _NOEXCEPT {return ::expm1((double)__lcpp_x);}
+
+#endif  // !((defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14)) || defined(__AVR__))
+
+#if !(defined(_LIBCPP_MSVCRT) && ((_VC_CRT_MAJOR_VERSION-0) < 14))
 
 // fdim
 
@@ -1264,6 +1268,8 @@ hypot(_A1 __lcpp_x, _A2 __lcpp_y) _NOEXCEPT
     return ::hypot((__result_type)__lcpp_x, (__result_type)__lcpp_y);
 }
 
+#ifndef __AVR__
+
 // ilogb
 
 inline _LIBCPP_INLINE_VISIBILITY int ilogb(float __lcpp_x) _NOEXCEPT       {return ::ilogbf(__lcpp_x);}
@@ -1347,6 +1353,7 @@ template <class _A1>
 inline _LIBCPP_INLINE_VISIBILITY
 typename std::enable_if<std::is_integral<_A1>::value, double>::type
 logb(_A1 __lcpp_x) _NOEXCEPT {return ::logb((double)__lcpp_x);}
+#endif  // __AVR__
 
 // lrint
 
@@ -1373,6 +1380,8 @@ typename std::enable_if<std::is_integral<_A1>::value, long>::type
 lround(_A1 __lcpp_x) _NOEXCEPT {return ::lround((double)__lcpp_x);}
 
 // nan
+
+#ifndef __AVR__
 
 // nearbyint
 
@@ -1479,6 +1488,8 @@ inline _LIBCPP_INLINE_VISIBILITY
 typename std::enable_if<std::is_integral<_A1>::value, double>::type
 rint(_A1 __lcpp_x) _NOEXCEPT {return ::rint((double)__lcpp_x);}
 
+#endif  // __AVR__
+
 // round
 
 inline _LIBCPP_INLINE_VISIBILITY float       round(float __lcpp_x) _NOEXCEPT       {return ::roundf(__lcpp_x);}
@@ -1491,6 +1502,7 @@ inline _LIBCPP_INLINE_VISIBILITY
 typename std::enable_if<std::is_integral<_A1>::value, double>::type
 round(_A1 __lcpp_x) _NOEXCEPT {return ::round((double)__lcpp_x);}
 
+#ifndef __AVR__
 // scalbln
 
 inline _LIBCPP_INLINE_VISIBILITY float       scalbln(float __lcpp_x, long __lcpp_y) _NOEXCEPT       {return ::scalblnf(__lcpp_x, __lcpp_y);}
@@ -1526,6 +1538,7 @@ template <class _A1>
 inline _LIBCPP_INLINE_VISIBILITY
 typename std::enable_if<std::is_integral<_A1>::value, double>::type
 tgamma(_A1 __lcpp_x) _NOEXCEPT {return ::tgamma((double)__lcpp_x);}
+#endif  // __AVR__
 
 // trunc
 

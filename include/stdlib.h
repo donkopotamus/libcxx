@@ -123,6 +123,11 @@ inline _LIBCPP_INLINE_VISIBILITY lldiv_t div(long long __x, long long __y) _NOEX
 #endif // _LIBCPP_HAS_NO_LONG_LONG
 #endif // _LIBCPP_MSVCRT / __sun__ / _AIX
 
+// AVR does not provide strtof, but a float is a double
+#ifdef __AVR__
+inline _LIBCPP_INLINE_VISIBILITY float strtof(const char *__nptr, char **__endptr) _NOEXCEPT {return strtod(__nptr, __endptr);}
+#endif  // __AVR__
+
 }  // extern "C++"
 
 #endif  // __cplusplus

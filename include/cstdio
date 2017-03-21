@@ -123,7 +123,10 @@ using ::sprintf;
 using ::sscanf;
 using ::vfprintf;
 using ::vfscanf;
+
+#ifndef __AVR__
 using ::vsscanf;
+#endif  // __AVR__
 using ::vsnprintf;
 using ::vsprintf;
 using ::fgetc;

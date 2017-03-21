@@ -111,7 +111,9 @@ using ::atoll;
 #endif // _LIBCPP_HAS_NO_LONG_LONG
 using ::strtod;
 using ::strtof;
+#ifndef _LIBCPP_HAS_NO_LONG_DOUBLE
 using ::strtold;
+#endif // _LIBCPP_HAS_NO_LONG_DOUBLE
 using ::strtol;
 #ifndef _LIBCPP_HAS_NO_LONG_LONG
 using ::strtoll;
@@ -129,7 +131,9 @@ using ::realloc;
 using ::abort;
 using ::atexit;
 using ::exit;
+#ifndef __AVR__
 using ::_Exit;
+#endif  // __AVR__
 using ::getenv;
 using ::system;
 using ::bsearch;

@@ -283,6 +283,7 @@ char_traits<char>::find(const char_type* __s, size_t __n, const char_type& __a) 
 
 // char_traits<wchar_t>
 
+#ifndef _LIBCPP_HAS_NO_WCHAR_API
 template <>
 struct _LIBCPP_TEMPLATE_VIS char_traits<wchar_t>
 {
@@ -386,6 +387,7 @@ char_traits<wchar_t>::find(const char_type* __s, size_t __n, const char_type& __
 #endif
 }
 
+#endif // _LIBCPP_HAS_NO_WCHAR_API
 
 #ifndef _LIBCPP_HAS_NO_UNICODE_CHARS
 

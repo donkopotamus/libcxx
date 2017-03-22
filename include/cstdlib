@@ -144,11 +144,17 @@ using ::ldiv;
 #ifndef _LIBCPP_HAS_NO_LONG_LONG
 using ::lldiv;
 #endif // _LIBCPP_HAS_NO_LONG_LONG
+
+#ifndef _LIBCPP_HAS_NO_MB_SEQUENCE_API
 using ::mblen;
+#ifndef _LIBCPP_HAS_NO_WCHAR_API
 using ::mbtowc;
 using ::wctomb;
 using ::mbstowcs;
 using ::wcstombs;
+#endif  // _LIBCPP_HAS_NO_WCHAR_API
+#endif  // _LIBCPP_HAS_NO_MB_SEQUENCE_API
+
 #ifdef _LIBCPP_HAS_QUICK_EXIT
 using ::at_quick_exit;
 using ::quick_exit;

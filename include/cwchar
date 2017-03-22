@@ -105,7 +105,13 @@ size_t wcsrtombs(char* restrict dst, const wchar_t** restrict src, size_t len,
 
 #include <__config>
 #include <cwctype>
+
+#ifndef _LIBCPP_HAS_NO_WCHAR_API
 #include <wchar.h>
+#elif defined(__AVR__)
+// needed on AVR with no WCHAR_API to export tm
+#include <time.h>
+#endif // _LIBCPP_HAS_NO_WCHAR_API
 
 #if !defined(_LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER)
 #pragma GCC system_header
@@ -118,6 +124,7 @@ using ::size_t;
 using ::tm;
 using ::wint_t;
 using ::FILE;
+#ifndef _LIBCPP_HAS_NO_WCHAR_API
 using ::fwprintf;
 using ::fwscanf;
 using ::swprintf;
@@ -187,6 +194,8 @@ using ::putwchar;
 using ::vwprintf;
 using ::wprintf;
 #endif
+
+#endif // _LIBCPP_HAS_NO_WCHAR_API
 
 _LIBCPP_END_NAMESPACE_STD
 

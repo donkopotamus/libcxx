@@ -228,6 +228,12 @@
 # ifndef __LONG_LONG_SUPPORTED
 #  define _LIBCPP_HAS_NO_LONG_LONG
 # endif  // __LONG_LONG_SUPPORTED
+# ifndef __WCHAR_API_SUPPORTED
+#  define _LIBCPP_HAS_NO_WCHAR_API
+# endif  // __WCHAR_API_SUPPORTED
+# ifndef __MB_SEQUENCE_API_SUPPORTED
+#  define _LIBCPP_HAS_NO_MB_SEQUENCE_API
+# endif  // __MB_SEQUENCE_API_SUPPORTED
 #endif  // __AVR__
 
 #if defined(__CloudABI__)

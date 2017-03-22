@@ -16,6 +16,13 @@
 
 #include_next <wchar.h>
 
+#elif defined(__AVR__)
+# define __need_wchar_t
+# define __need_wint_t
+# include <stddef.h>
+# include <support/avr/wchar.h>
+# undef __need_wchar_t
+# undef __need_wint_t
 #elif !defined(_LIBCPP_WCHAR_H)
 #define _LIBCPP_WCHAR_H
 
